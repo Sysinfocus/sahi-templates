@@ -1,2 +1,2 @@
 GET "https://github.com/Sysinfocus/sahi-templates" "/sahi-repo"
-INIT "/sahi/demo" "/testing/demo"
+INIT "/sahi-repo/demo" "/testing/demo"
