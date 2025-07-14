@@ -11,13 +11,14 @@ Check out the example `Steps to use SAHI`
 ## Steps to use SAHI
 1. Clone the repo.
 2. Extract `sahi.exe` file from `sahi.zip`. This is the main executable file with no dependencies. Note: Currently only Win x64 is supported.
-3. Based on the downloaded location of your templates, you need to modify `.sahi` file contents.
-4. To generate a complete new solution with API, Blazor Wasm UI and Aspire Hosting, run
+3. Add path to `sahi.exe` to your `System Environment` so you can run `sahi` from any folder on the system.
+4. Based on the downloaded location of your templates, you need to modify `.sahi` file contents.
+5. To generate a complete new solution with API, Blazor Wasm UI and Aspire Hosting, run
    ```
    sahi new-solution.sahi
    ```
-5. To add a feature, in this case a Course feature is added, run
+6. To add a feature, in this case a Course feature is added, run
    ```
    sahi new-feature.sahi
    ```
-6. That's it. You now have fully functional .NET API, Blazor Wasm UI with Aspire hosting.
+7. That's it. You now have fully functional .NET API, Blazor Wasm UI with Aspire hosting.
