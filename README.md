@@ -8,6 +8,11 @@ It is platform and language agnostic, hence can be used to rapidly build applica
 
 Check out the example `Steps to use SAHI`
 
+## Why SAHI?
+Today, when every developer is after Artificial Intelligence (AI) to generate code, SAHI focuses on Human Intelligence (HI) where you craft the template which are repetitive in nature, carefully generate and replicate with placeholders to get deterministic results.
+
+With AI, your output is occasionally correct but you need to verify to be sure it is what you wanted in the first place, but with `SAHI `, you are crafting the output without burning your pocket and the result is deterministic, in no time. You can use AI to generate `SAHI` file with templates and reuse it without paying for your tokens for what you have already are sure about.
+
 ## Language Commands, Arguments and Description
 Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n]` will replace with NewLine, `[\t]` will replace with Tab, `''` will replace with double quote, `\\` will replace with single back slash.
 ```
