@@ -1,3 +1,0 @@
-GET "https://github.com/Sysinfocus/sahi-templates" "/sahi-repo"
-INIT "/sahi-repo/demo" "/testing/demo"
-ADD "/sahi-repo/demo" "/testing/demo"

@@ -1,0 +1,33 @@
+@HostAddress = {{Url}}/api/v1/{{Table}}
+@id = replace-your-id
+@size = 25
+@page = 1
+@ascending = True
+@property = ID
+@search = 
+
+GET {{HostAddress}}/{{size}}/{{page}}/{{ascending}}/{{property}}/{{search}}
+Accept: application/json
+
+###
+GET {{HostAddress}}/{{id}}
+Accept: application/json
+
+###
+POST {{HostAddress}}
+Content-type: application/json
+
+{
+	{{ccModelProperties}}
+}
+
+###
+PUT {{HostAddress}}/{{id}}
+Content-type: application/json
+
+{
+	{{ccModelProperties}}
+}
+
+###
+DELETE {{HostAddress}}/{{id}}

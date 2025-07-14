@@ -1,0 +1,48 @@
+@page "/Home"
+@inject ApiService api
+
+<PageTitle>Home - ProjectName</PageTitle>
+
+<div class="flex-col g4 mb1">
+    <h3>Home</h3>
+    <p class="muted">Welcome to ProjectName. You are authorized to use now.</p>
+</div>
+<div class="flex wrap">
+    @foreach(var feature in features)
+    {
+        <Button Text="@feature" Type="ButtonType.Secondary" OnClick="@(_ => browserExtensions.Goto($"Features/{feature}"))" />
+    }
+</div>
+<div class="flex-col mtb1">
+    <Grid Columns="1fr auto" Gap="1rem" Style="align-items: flex-start">
+        <Textarea Placeholder="Execute sql query..." Rows="3" @bind-Text="@sql" />
+        <Button Text="Execute" Type="ButtonType.Destructive" OnClick="ExecuteSql" />
+    </Grid>
+    @if (output is not null)
+    {
+        <Table Style="max-height:455px;overflow:auto">
+            <TableBody>
+                @((MarkupString)output)
+            </TableBody>
+        </Table>
+    }
+</div>
+
+@code {
+    string? sql;
+    string? output = "This area displays the result of the sql query...";
+
+    string[] features = [        
+        "Users",
+        "RefreshTokens",
+        "Constants",
+        // New Features
+    ];
+
+
+    private async Task ExecuteSql()
+    {
+        if (string.IsNullOrWhiteSpace(sql)) return;
+        output = await api.Get($"/api/v1/Composite/sql/{sql}");
+    }
+}

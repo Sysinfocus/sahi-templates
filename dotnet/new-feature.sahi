@@ -1,0 +1,8 @@
+PARAM "%a" "Course"
+PARAM "%b" "Courses"
+PARAM "%c" "SimpleUI"
+
+ADD "D:\something\feature" "D:\%c" "ProjectName" "%c"
+PROPS "Guid,Id,Ignore|string,Name,Input|string?,Description,Textarea|bool,IsActive,Switch"
+
+NEXT "new-feature-repeat.sahi"

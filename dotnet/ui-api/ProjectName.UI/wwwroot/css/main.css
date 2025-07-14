@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.light {
+    color-scheme: light;
+}
+
+.dark {
+    color-scheme: dark;
+}
+
+a {
+    align-self: flex-start;
+    outline: none;
+    text-decoration: none;
+    color: orangered
+}
+
+
+.safe-height {
+    height: calc(100dvh - 48px  - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+.safe-height-listing {
+    height: calc(100dvh - 2rem - 48px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+}
+
+.sbc-sheet-content.xshow {
+    position:absolute !important;
+    height: 100%;    
+    padding-top: calc(1rem + env(safe-area-inset-top));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    overflow: auto;
+}
+.sbc-sheet-content.xshow .show-close{
+    margin-top: env(safe-area-inset-top);
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.hide {
+    display: none
+}
+
+.sbc-input label, .sbc-textarea label, .sbc-select label, .sbc-group label {
+    --error: var(--primary-fg) !important
+}
+
+.sbc-input p, .sbc-textarea p, .sbc-select p, .sbc-group p:not(.month-year) {
+    font-size: 0.75rem !important
+}
+
+.sbc-input.mandatory input,
+.sbc-textarea.mandatory textarea,
+.sbc-datepicker.mandatory button.sbc-datepicker-button,
+.sbc-select.mandatory button {
+    border-left: 2px solid var(--error) !important;
+    border-radius: 5px;
+}
+
+.sbc-select label { opacity: 0.75; }
+
+body:has(.sbc-sheet),
+body:has(.sbc-alertdialog),
+body:has(.sbc-popover) {
+    overflow: hidden !important
+}
+
+@media screen and (max-width: 800px) {
+    .mobile {
+        display: none
+    }
+
+    .desktop {
+        display: unset
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .mobile {
+        display: unset
+    }    
+    .desktop {
+        display: none
+    }
+}

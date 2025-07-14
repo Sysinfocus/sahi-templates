@@ -1,0 +1,29 @@
+<div class="safe-height">
+    <Sidebar Items="@sideBarItems" Show="@Show" OnMenuClick="HandleMenu" />
+</div>
+
+@code
+{
+    [Parameter] public bool Show { get; set; }
+    [Parameter] public EventCallback OnClose { get; set; }
+
+    private List<SideBarItem> sideBarItems = [
+        new("Menu Items",1,0,"Home","home"),
+
+        new("For Admins", 4, 0, "Masters", "apps"),
+        new("For Admins", 5, 4,"Users"),
+        new("For Admins", 5, 4,"RefreshTokens"),
+        new("For Admins", 5, 4,"Constants"),
+
+        // Add your existing features similar to the one below
+        new("Features",2,0,"Features", "menu"),
+        // New Features
+    ];
+
+    private async Task HandleMenu(SideBarItem menu)
+    {
+        if (menu.Id != 1 && menu.Parent == 0) return;
+        browserExtensions.Goto(menu.Name == "Home" ? "/" : $"/Features/{menu.Name}");
+        await OnClose.InvokeAsync();
+    }
+}

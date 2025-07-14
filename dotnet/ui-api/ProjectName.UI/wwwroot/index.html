@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <title>Welcome to ProjectName</title>
+    <base href="/" />
+    <link rel="manifest" href="manifest.json?v=0.0.1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="ProjectName - one solution to manage education!" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="transparent">
+    <link rel="favicon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="192x192.png" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="_content/Sysinfocus.AspNetCore.Components/styles.css" />
+    <link rel="stylesheet" href="_content/Sysinfocus.AspNetCore.Components/Sysinfocus.AspNetCore.Components.bundle.scp.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    <div id="app"></div>
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+    <script>
+        let first = true;
+        if (first) {
+            first = false;
+            fetch("first.html").then(response => response.text()).then(result => document.querySelector('#app').innerHTML = result);
+        }
+    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

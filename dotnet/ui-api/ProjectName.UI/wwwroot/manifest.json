@@ -1,0 +1,38 @@
+{
+  "screenshots": [
+    {
+      "src": "512x512.png",
+      "sizes": "2880x1800",
+      "type": "image/png",
+      "description": "One solution to manage education!"
+    }
+  ],
+  "short_name": "E360°",
+  "name": "Sysinfocus E360°",
+  "icons": [
+    {
+      "src": "512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "id": "/?source=pwa",
+  "scope": ".",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "theme_color": "transparent",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "iarc_rating_id": "-",
+  "description": "Sysinfocus E360° - one solution to manage education!",
+  "author": "Sysinfocus Solutions Private Limited",
+  "version": "1.0.0"  
+}

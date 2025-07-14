@@ -1,0 +1,72 @@
+@inherits BaseUpdate<Update, ConstantDto, Guid>
+
+<Sheet Show="@Show" OnClose="HandleDiscard">
+    <div class="flex-col jcsb h100">
+
+        <h4>Update @Title</h4>
+
+        @if (Model is not null)
+        {
+            <CascadingValue Value="Errors" IsFixed>
+                <div class="flex-col f1" style="margin-inline: -1.5rem; padding: 1.5rem; overflow: auto">
+                    <Grid Class="aifs" MinColWidth="150px">
+                        <Input Id="focusElement" Focus Label="Order" Class="mandatory" TItem="int" @bind-Value="@Model!.Order" Error="@nameof(Model.Order)" />
+                        <Input Label="Group" Class="mandatory" TItem="string" @bind-Value="@Model!.Group" Error="@nameof(Model.Group)" />
+                        <Input Label="Key" Class="mandatory" TItem="string" @bind-Value="@Model!.Key" Error="@nameof(Model.Key)" />
+                        <Input Label="Value" Class="mandatory" TItem="string" @bind-Value="@Model!.Value" Error="@nameof(Model.Value)" />
+                    </Grid>
+                </div>
+            </CascadingValue>
+        }
+        <div class="flex-col">
+            <BusyAnimation Show="@IsBusy" />
+            <div class="flex g8 jce aic">
+                <Button AccessKey="u" Text="Update" OnClick="HandleUpdate" Disabled="@IsBusy" />
+                <Button AccessKey="d" Text="Discard" Type="ButtonType.Ghost" OnClick="HandleDiscard" Disabled="@IsBusy" />
+            </div>
+        </div>
+
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(ErrorMessage))
+    {
+        <Toast Show Style="right:unset;left:1rem;min-width:345px;background-color:red; color:white">
+            <span>@ErrorMessage</span>
+        </Toast>
+    }
+</Sheet>
+
+@code
+{
+    protected override async Task OnInitializedAsync()
+    {
+        Title = "Constant";
+        await LoadData();
+    }
+
+    protected override async Task HandleUpdate()
+    {
+        ErrorMessage = null;
+        if (Model is null) return;
+
+        Errors = Model.Errors();
+        if (!Model.IsValid) return;
+
+        IsBusy = true;
+        var apiResult = await ApiService.Put<ConstantDto>(string.Format(Endpoints.Update, Id), Model);
+        if (apiResult.IsSuccess)
+            await OnClose.InvokeAsync(true);
+        else
+            ErrorMessage = apiResult.Message;
+
+        IsBusy = false;
+        if (!string.IsNullOrWhiteSpace(ErrorMessage))
+        {
+            await InvokeAsync(async () =>
+            {
+                StateHasChanged();
+                await Task.Delay(ApiService.TOAST_SHOW_SECONDS).ContinueWith(_ => ErrorMessage = null);
+            });
+        }
+    }
+}

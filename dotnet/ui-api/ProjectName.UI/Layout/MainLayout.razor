@@ -1,0 +1,163 @@
+@inherits LayoutComponentBase
+@inject NavigationManager navigationManager
+@inject AuthenticationStateProvider asp
+@attribute [Authorize]
+
+<style>
+    .main-container {
+        display:flex;
+        flex-direction:column;
+        width:100dvw;
+        height:100dvh;
+    }
+
+    .header {
+        display:flex;
+        justify-content:space-between;
+        color:var(--primary-fg);
+        background-color:#ccc6;
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+        position:sticky;
+        height:calc(48px + env(safe-area-inset-top));
+        align-items:center;
+        top:0;
+        left:0;
+        padding-top:env(safe-area-inset-top);        
+        padding-left:env(safe-area-inset-left);
+        padding-right:env(safe-area-inset-right);
+        z-index:1;
+    }
+    .dark .header {
+        background-color: #3336;
+    }
+</style>
+
+<div class="main-container" @onclick="initialization.HandleMainLayoutClickEvent">
+    <div class="header">
+        <div class="flex jcsb aic w100" style="max-width:1400px;margin:auto;padding:0 1rem">
+            <div class="flex g4 aifs">
+                <AuthorizeView>
+                    <Authorized>
+                        <Icon Name="@(showMenu ? "close" : "notes")" Tooltip="Toggle Menu" OnClick="ToggleMenu" />
+                    </Authorized>
+                </AuthorizeView>
+                <div class="flex-col g0">
+                    <a style="font-weight:600;color:var(--primary-fg)" href="/Home">ProjectName</a>
+                    <small class="muted-color" style="font-size:0.65rem">One solution to manage education!</small>
+                </div>
+            </div>
+            <div class="flex aic">
+                <Icon Name="@(initialization.CurrentTheme == "light" ? "dark_mode" : "light_mode")" Size="18px"
+                      Tooltip="Toggle Theme" OnClick="ToggleTheme" />
+                <AuthorizeView>
+                    <Authorized>
+                        <Icon Name="logout" Size="18px" Tooltip="Logout" OnClick="HandleLogout" />
+                        <Avatar Name="@authorizedUser?.Fullname" Size="AvatarSize.Small" Background="orangered" />
+                    </Authorized>
+                </AuthorizeView>
+            </div>
+        </div>
+    </div>
+    <div class="safe-height" style="display:grid;grid-template-columns:auto 1fr;gap:0;max-width:1400px;width:100%;margin:0 auto">
+        <div>
+            <AuthorizeView>
+                <Authorized>
+                    <AppSideBar Show="@showMenu" OnClose="() => showMenu = isDesktop ? showMenu : false" />
+                </Authorized>
+            </AuthorizeView>
+        </div>
+        <div style="overflow:auto;padding:1rem">
+            @Body
+        </div>
+    </div>
+</div>
+
+@code
+{
+    private AuthenticationState? authenticationState;
+    private bool showMenu;
+    public AuthorizedUserDto? authorizedUser;
+    private bool isDesktop;
+    public static string DataTableHeight = ";height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 2rem - 48px)";
+
+    protected override async Task OnInitializedAsync()
+    {
+        isDesktop = await browserExtensions.IsDesktop();
+        navigationManager.LocationChanged += (s, a) => HandleLocationChanged(s, a);
+        await CheckAuthentication();
+    }
+
+    private async void HandleLocationChanged(object? sender, LocationChangedEventArgs args) => await CheckAuthentication();
+
+    private async Task CheckAuthentication()
+    {
+        var path = GetUrlPath();
+        var login = string.IsNullOrEmpty(path) || path == "login" || path == "register" || path == "students" || path == "employees";
+        authenticationState = await ((ApplicationStateProvider)asp).GetAuthenticationStateAsync();
+
+        var auth = authenticationState?.User?.Identity?.IsAuthenticated;
+        authorizedUser = await GetUser();
+        if (auth == true && login == true)
+            browserExtensions.Goto("Home");
+        else if (auth == false && login == false) 
+            browserExtensions.Goto("/");
+    }
+
+    private string GetUrlPath()
+    {
+        var baseUrl = browserExtensions.GetBaseUrl();
+        return browserExtensions.GetUrl().Replace(baseUrl, "").Trim().ToLower();
+    }
+
+    private void NavigateToLogin()
+    {
+        var path = GetUrlPath();
+        if (string.IsNullOrEmpty(path) || path != "login" || path != "register") browserExtensions.Goto("/");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await initialization.InitializeTheme();
+            var color = initialization.CurrentTheme == "light" ? "#eeeeee" : "#444444";
+            await browserExtensions.EvalVoid($"document.querySelector('meta[name=\"theme-color\"]').content = '{color}'");
+        }
+    }
+
+    private async Task ToggleTheme()
+    {
+        await initialization.ToggleTheme();
+        var color = initialization.CurrentTheme == "light" ? "#eeeeee" : "#444444";
+        await browserExtensions.EvalVoid($"document.querySelector('meta[name=\"theme-color\"]').content = '{color}'");
+    }
+
+    private void ToggleMenu() => showMenu = !showMenu;
+
+    private async Task HandleLogout()
+    {
+        await ((ApplicationStateProvider)asp).Logout();
+        browserExtensions.Goto("/");
+    }
+
+    private async Task<AuthorizedUserDto?> GetUser()
+    {
+        var token = await ((ApplicationStateProvider)asp).GetToken();
+        var claims = ApplicationStateProvider.GetClaimsFromAccessToken(token)?.ToArray();
+        if (claims is null || claims.Length == 0) return default;
+        var id = claims.FirstOrDefault(x => x.Type == "nameid")!.Value;
+        var username = claims.FirstOrDefault(x => x.Type == "unique_name")!.Value;
+        var email = claims.FirstOrDefault(x => x.Type == "email")!.Value;
+        var fullName = claims.FirstOrDefault(x => x.Type == "given_name")!.Value;
+        var roles = claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)!.Value;
+        return new AuthorizedUserDto
+        {
+            Id = new Guid(id),
+            Username = username,
+            Email = email ,
+            Fullname = fullName,
+            Roles = roles.Split(','),
+        };
+    }
+}
