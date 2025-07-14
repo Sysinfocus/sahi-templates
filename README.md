@@ -20,7 +20,7 @@ Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n
 | CLEAR 	| 					| Clears <condition> for further Replications. 		|
 | NEXT 		| <source_file>				| Chain <source_file> to execute. 			|
 | PARAM 	| <var> <value>				| Wherever <var> is declared, replace it with <value>. 	|
-| PROPS		| <comma-separated-prop1| ..prop2| ...>	| Pass properties separated by | and , internally. 	|
+| PROPS		| <comma-separated-prop1| ..prop2| ...	| Pass properties separated by | and , internally. 	|
 | REPLACE	| <src> <find> <replace>		| Replaces <find> with <replace> in <src> file. 	|
 | REPLACEALL	| <src> <find> <replace>		| Replaces in all matching <src> files. 		|
 | RENAME	| <find> <replace> <overwrite?>		| Renames folders,files,content. Can overwrite. 	|
