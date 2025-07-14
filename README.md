@@ -11,7 +11,7 @@ Check out the example `Steps to use SAHI`
 ## Steps to use SAHI
 1. Clone the repo.
 2. Extract `sahi.exe` file from `sahi.zip`. This is the main executable file with no dependencies. Note: Currently only Win x64 is supported.
-3. Based on the location of your templates, you need to modify `.sahi` file contents.
+3. Based on the downloaded location of your templates, you need to modify `.sahi` file contents.
 4. To generate a complete new solution with API, Blazor Wasm UI and Aspire Hosting, run
    ```
    sahi new-solution.sahi
