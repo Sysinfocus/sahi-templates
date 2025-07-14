@@ -8,6 +8,33 @@ It is platform and language agnostic, hence can be used to rapidly build applica
 
 Check out the example `Steps to use SAHI`
 
+## Language Commands, Arguments and Description
+```
+| Commands 	| Arguments 				| Description 					     	|
+| ------------- | ------------------------------------- | ----------------------------------------------------- |
+| ADD		| <src> <des> <find> <replace>		| Copies <src> to <des> after replacing any <find>.	|
+| INIT 		| <src> <des>				| Initializes a copy of <src> into <des>. 		|
+| RUN 		| <command> <args1> <args2> ...		| Runs a <command> using specified <args#>. 		|
+| IF		| <condition> <template>		| Replicates <template> when <condition> is met. 	|
+| CLEAR 	| 					| Clears <condition> for further Replications. 		|
+| NEXT 		| <source_file>				| Chain <source_file> to execute. 			|
+| PARAM 	| <var> <value>				| Wherever <var> is declared, replace it with <value>. 	|
+| PROPS		| <comma-separated-prop1| ..prop2| ...>	| Pass properties separated by | and , internally. 	|
+| REPLACE	| <src> <find> <replace>		| Replaces <find> with <replace> in <src> file. 	|
+| REPLACEALL	| <src> <find> <replace>		| Replaces in all matching <src> files. 		|
+| RENAME	| <find> <replace> <overwrite?>		| Renames folders,files,content. Can overwrite. 	|
+| RENAMEALL	| <find> <replace>			| Renames all files,content matching with overwrite. 	|
+| COPY		| <from> <to> <src> <des> <ow?>		| Copies a file optionally with overwrite. 		|
+| COPYALL	| <from> <to> <src> <des> <ow?>		| Copies all files optionally with overwrite. 		|
+| DELETE	| <file> <des>				| Delete a <file> from the <des> folder. 		|
+| DELETEALL	| <file> <des>				| Delete all files recursively from <des> folder. 	|
+| CREATE	| <file> <content> <des?>		| Create a new <file> with <content> in the <des?>. 	|
+| GET		| <repo> <des>				| Clones/pulls a public <repo> into <des> folder. 	|
+| REPLICATE	| <src> <find> <replace>		| Replicates <props> based on <condition> in all 	|
+| 		| 					| matching <src> files and replaces <find> with 	|
+| 		| 					| the given pattern. 					|
+```
+
 ## Steps to use SAHI
 1. Clone the repo.
 2. Extract `sahi.exe` file from `sahi.zip`. This is the main executable file with no dependencies. Note: Currently only Win x64 is supported.
