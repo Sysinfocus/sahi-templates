@@ -9,6 +9,7 @@ It is platform and language agnostic, hence can be used to rapidly build applica
 Check out the example `Steps to use SAHI`
 
 ## Language Commands, Arguments and Description
+Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n]` will replace with NewLine, `[\t]` will replace with Tab, `''` will replace with double quote, `\\` will replace with single back slash.
 ```
 | Commands 	| Arguments 				| Description 					     	|
 | ------------- | ------------------------------------- | ----------------------------------------------------- |
