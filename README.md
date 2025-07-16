@@ -57,3 +57,16 @@ Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n
    sahi new-feature.sahi
    ```
 7. That's it. You now have fully functional .NET API, Blazor Wasm UI with Aspire hosting.
+
+## Release Notes
+### 0.0.0.2
+- Use `SILENT` command to suppress information on console.
+- Use `INFO` command to show information on console.
+- Pass arguments from command line and use them in templates. For eg:
+  ```
+  sahi file.sahi Test
+  ```
+  `file.sahi` is the template file and `Test` is an additional arguments which can be used in template as `[\1]` which will be replace with `Test`
+
+### 0.0.0.1
+- First release
