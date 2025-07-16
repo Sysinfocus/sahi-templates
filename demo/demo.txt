@@ -1,0 +1,11 @@
+This is a demo file for SAHI
+
+The following placeholder gets replaced with different tags based on the props and conditions:
+
+{{Placeholder}}
+
+
+{{Placeholder}}
+
+
+{{Placeholder}}
