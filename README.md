@@ -15,8 +15,9 @@ With AI, your output is occasionally correct but you need to verify to be sure i
 
 ## Language Commands, Arguments and Description
 Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n]` will replace with NewLine, `[\t]` will replace with Tab, `''` will replace with double quote, `\\` will replace with single back slash.
+
 ```
-| Commands 	    |   Arguments 				              | Description 					     	                      |
+| Commands      |   Arguments                           | Description                                           |
 | ------------- | ------------------------------------- | ----------------------------------------------------- |
 |  ADD          |   <src> <des> <find> <replace>        | Copies <src> to <des> after replacing any <find>.     | 
 |  CLEAR        |                                       | Clears <condition> for further Replications.          | 
