@@ -6,5 +6,3 @@ REPLACEALL "main.js" "// Imports" "// Imports[\n]import ''./components/{{Compone
 REPLACEALL "*.html" "<!-- Example -->" "<!-- Example -->[\n][\t]<{{Component}} style='font-family:system-ui;font-size:2rem'>This is the demo of the component.</{{Component}}><br/>"    
 REPLACEALL "*.*" "{{ComponentClass}}" "[\1]"
 REPLACEALL "*.*" "{{Component}}" "[\2]"
-
-# Test
