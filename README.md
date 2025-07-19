@@ -42,6 +42,8 @@ Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n
 |  REPLACE      |   <src> <find> <replace>              | Replaces <find> with <replace> in <src> file.         | 
 |  REPLACEALL   |   <src> <find> <replace>              | Replaces in all matching <src> files.                 | 
 |  SILENT       |                                       | Executes silently except for errors.                  |
+|  UNZIP        |   <zipfile> <des> <overwrite?>        | Extracts <zipfile> to the <des> folder.               |
+|  ZIP          |   <src> <zipfile> <overwrite?>        | Creates a <zipfile> from the <src> folder.            |
 ```
 
 ## Steps to use SAHI
@@ -60,6 +62,10 @@ Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n
 7. That's it. You now have fully functional .NET API, Blazor Wasm UI with Aspire hosting.
 
 ## Release Notes
+### 0.0.0.3
+- Use `ZIP` command to create .zip file from the given `<src>` folder with optional `overwrite`.
+- Use `UNZIP` command to extract .zip file to the given `<des>` folder with optional `overwrite`.
+
 ### 0.0.0.2
 - Use `SILENT` command to suppress information on console.
 - Use `INFO` command to show information on console.
