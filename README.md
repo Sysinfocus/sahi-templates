@@ -16,35 +16,31 @@ With AI, your output is occasionally correct but you need to verify to be sure i
 ## Language Commands, Arguments and Description
 Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n]` will replace with NewLine, `[\t]` will replace with Tab, `''` will replace with double quote, `\\` will replace with single back slash.
 
-```
-| Commands      |   Arguments                           | Description                                           |
-| ------------- | ------------------------------------- | ----------------------------------------------------- |
-|  ADD          |   <src> <des> <find> <replace>        | Copies <src> to <des> after replacing any <find>.     | 
-|  CLEAR        |                                       | Clears <condition> for further Replications.          | 
-|  COPY         |   <from> <to> <src> <des> <ow?>       | Copies a file optionally with overwrite.              | 
-|  COPYALL      |   <from> <to> <src> <des> <ow?>       | Copies all files optionally with overwrite.           | 
-|  CREATE       |   <file> <content> <des?>             | Create a new <file> with <content> in the <des?>.     | 
-|  DELETE       |   <file> <des>                        | Delete a <file> from the <des> folder.                | 
-|  DELETEALL    |   <file> <des>                        | Delete all files recursively from <des> folder.       | 
-|  GET          |   <repo> <des>                        | Clones/pulls a public <repo> into <des> folder.       | 
-|  RUN          |   <command> <args1> <args2> ...       | Runs a <command> using specified <args#>.             | 
-|  IF           |   <condition> <template>              | Replicates <template> when <condition> is met.        | 
-|  INFO         |                                       | Starts showing messages.                              | 
-|  INIT         |   <src> <des>                         | Initializes a copy of <src> into <des>.               | 
-|  NEXT         |   <source_file>                       | Chain <source_file> to execute.                       |
-|  PARAM        |   <var> <value>                       | Wherever <var> is declared, replace it with <value>.  | 
-|  PROPS        |   <comma-separated-prop1|..prop2|...> | Pass properties separated by | and , internally.      | 
-|  RENAME       |   <find> <replace> <overwrite?>       | Renames folders,files,content. Can overwrite.         | 
-|  RENAMEALL    |   <find> <replace>                    | Renames all files,content matching with overwrite.    | 
-|  REPLICATE    |   <src> <find> <replace>              | Replicates <props> based on <condition> in all        | 
-|               |                                       | matching <src> files and replaces <find> with         | 
-|               |                                       | the given pattern.                                    | 
-|  REPLACE      |   <src> <find> <replace>              | Replaces <find> with <replace> in <src> file.         | 
-|  REPLACEALL   |   <src> <find> <replace>              | Replaces in all matching <src> files.                 | 
-|  SILENT       |                                       | Executes silently except for errors.                  |
-|  UNZIP        |   <zipfile> <des> <overwrite?>        | Extracts <zipfile> to the <des> folder.               |
-|  ZIP          |   <src> <zipfile> <overwrite?>        | Creates a <zipfile> from the <src> folder.            |
-```
+| Commands | Arguments | Description 
+| - | - | - |
+| ADD | &lt;src&gt; &lt;des&gt; &lt;find&gt; &lt;replace&gt; | Copies &lt;src&gt; to &lt;des&gt; after replacing any &lt;find&gt;. | 
+| CLEAR | | Clears &lt;condition&gt; for further Replications. | 
+| COPY | &lt;from&gt; &lt;to&gt; &lt;src&gt; &lt;des&gt; &lt;ow?&gt; | Copies a file optionally with overwrite. | 
+| COPYALL | &lt;from&gt; &lt;to&gt; &lt;src&gt; &lt;des&gt; &lt;ow?&gt; | Copies all files optionally with overwrite. | 
+| CREATE | &lt;file&gt; &lt;content&gt; &lt;des?&gt; | Create a new &lt;file&gt; with &lt;content&gt; in the &lt;des?&gt;. | 
+| DELETE | &lt;file&gt; &lt;des&gt; | Delete a &lt;file&gt; from the &lt;des&gt; folder. | 
+| DELETEALL | &lt;file&gt; &lt;des&gt; | Delete all files recursively from &lt;des&gt; folder. | 
+| GET | &lt;repo&gt; &lt;des&gt; | Clones/pulls a public &lt;repo&gt; into &lt;des&gt; folder. | 
+| RUN | &lt;command&gt; &lt;args1&gt; &lt;args2&gt; ... | Runs a &lt;command&gt; using specified &lt;args#&gt;. | 
+| IF | &lt;condition&gt; &lt;template&gt; | Replicates &lt;template&gt; when &lt;condition&gt; is met. | 
+| INFO | | Starts showing messages. | 
+| INIT | &lt;src&gt; &lt;des&gt; | Initializes a copy of &lt;src&gt; into &lt;des&gt;. | 
+| NEXT | &lt;source_file&gt; | Chain &lt;source_file&gt; to execute. |
+| PARAM | &lt;var&gt; &lt;value&gt; | Wherever &lt;var&gt; is declared, replace it with &lt;value&gt;. | 
+| PROPS | &lt;comma-separated-prop1\|..prop2\|...&gt; | Pass properties separated by \| and , internally. | 
+| RENAME | &lt;find&gt; &lt;replace&gt; &lt;overwrite?&gt; | Renames folders,files,content. Can overwrite. | 
+| RENAMEALL | &lt;find&gt; &lt;replace&gt; | Renames all files,content matching with overwrite. | 
+| REPLICATE | &lt;src&gt; &lt;find&gt; &lt;replace&gt; | Replicates &lt;props&gt; based on &lt;condition&gt; in all matching &lt;src&gt; files and replaces &lt;find&gt; with the given pattern. | 
+| REPLACE | &lt;src&gt; &lt;find&gt; &lt;replace&gt; | Replaces &lt;find&gt; with &lt;replace&gt; in &lt;src&gt; file. | 
+| REPLACEALL | &lt;src&gt; &lt;find&gt; &lt;replace&gt; | Replaces in all matching &lt;src&gt; files. | 
+| SILENT | | Executes silently except for errors. |
+| UNZIP | &lt;zipfile&gt; &lt;des&gt; &lt;overwrite?&gt; | Extracts &lt;zipfile&gt; to the &lt;des&gt; folder. |
+| ZIP | &lt;src&gt; &lt;zipfile&gt; &lt;overwrite?&gt; | Creates a &lt;zipfile&gt; from the &lt;src&gt; folder. |
 
 ## Steps to use SAHI
 1. Clone the repo.
