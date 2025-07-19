@@ -1,0 +1,28 @@
+{
+  "name": "mylang",
+  "displayName": "MyLang",
+  "description": "A custom language for VS Code",
+  "version": "0.0.1",
+  "publisher": "Publisher Name",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "mylang",
+        "aliases": ["MyLang", "mylang"],
+        "extensions": [".ext"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mylang",
+        "scopeName": "source.mylang",
+        "path": "./syntaxes/mylang.tmLanguage.json"
+      }
+    ]
+  }
+}

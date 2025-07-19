@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode/master/extensions/theme-defaults/syntaxes/tmLanguage.schema.json",
+  "name": "[\2]",
+  "scopeName": "source.[\1]",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.[\1]",
+      "match": "//.*$"
+    },
+    {
+      "name": "keyword.control.[\1]",
+      "match": "\\b(INIT|ADD|RENAME|REPLACELL|REPLICATE|SILENT|INFO|COPY|COPYALL|DELETE|DELETEALL|GET|NEXT)\\b"
+    },
+    {
+      "name": "string.quoted.double.[\1]",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "constant.numeric.[\1]",
+      "match": "\\b\\d+(\\.\\d+)?\\b"
+    }
+  ],
+  "repository": {},
+  "scopeName": "source.[\1]"
+}

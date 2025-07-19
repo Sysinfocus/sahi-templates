@@ -1,0 +1,10 @@
+INIT "/sahi-repo/web/component" "/web-components-demo"
+
+RENAME "Component" "[\1]" "true"
+RENAME "mylang.tmLanguage.json" "[\1].tmLanguage.json" "true"
+REPLACEALL "main.js" "// Imports" "// Imports[\n]import ''./components/{{ComponentClass}}.js''"
+REPLACEALL "*.html" "<!-- Example -->" "<!-- Example -->[\n][\t]<{{Component}} style='font-family:system-ui;font-size:2rem'>This is the demo of the component.</{{Component}}><br/>"    
+REPLACEALL "*.*" "{{ComponentClass}}" "[\1]"
+REPLACEALL "*.*" "{{Component}}" "[\2]"
+
+# Test

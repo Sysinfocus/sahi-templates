@@ -1,0 +1,8 @@
+INIT "/sahi-repo/vscode-lang/template" "~/.vscode/extensions/[\1]"
+
+RENAME "mylang" "[\1]" "true"
+REPLACEALL "main.js" "// Imports" "// Imports[\n]import ''./components/{{ComponentClass}}.js''"
+REPLACEALL "*.html" "<!-- Example -->" "<!-- Example -->[\n][\t]<{{Component}} style='font-family:system-ui;font-size:2rem'>This is the demo of the component.</{{Component}}><br/>"    
+REPLACEALL "*.*" "mylang" "[\1]"
+REPLACEALL "*.*" "MyLang" "[\2]"
+REPLACEALL "*.*" ".ext" ".[\3]"
