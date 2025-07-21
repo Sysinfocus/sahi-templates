@@ -58,6 +58,10 @@ Commands are CASE SENSITIVE and should be avoided in arguments. In template `[\n
 7. That's it. You now have fully functional .NET API, Blazor Wasm UI with Aspire hosting.
 
 ## Release Notes
+### 0.0.0.4
+- You can now pass additional arguments from command line after the `.sahi` file which can be materialized inside `.sahi` file using `[\1] [\2] [\3]...` as respective arguments.
+- GitHub repo link added.
+
 ### 0.0.0.3
 - Use `ZIP` command to create .zip file from the given `<src>` folder with optional `overwrite`.
 - Use `UNZIP` command to extract .zip file to the given `<des>` folder with optional `overwrite`.
